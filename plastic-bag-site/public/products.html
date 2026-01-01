@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Products | Triple A</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <img src="assets/logo.png" alt="Triple A" style="height: 32px; margin-right: 12px;">
+        TRIPLE A
+      </a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="auth.html" id="auth-link">Sign In</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="container">
+    <h1>Wholesale Catalog.</h1>
+    <p>Bulk pricing and custom specifications available for registered commercial partners.</p>
+    <div id="product-list" class="grid">
+      <!-- Products loaded via JS -->
+      <div class="text-center" style="grid-column: 1/-1; padding: 100px;">
+        <p>Loading catalog...</p>
+      </div>
+    </div>
+  </section>
+
+  <script type="module" src="js/products.js"></script>
+  <script type="module" src="js/order.js"></script>
+  <script type="module">
+    import { checkUser } from './js/auth.js';
+    checkUser();
+  </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin Portal | Triple A</title>
+<link rel="stylesheet" href="css/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <img src="assets/logo.png" alt="Triple A" style="height: 32px; margin-right: 12px;">
+      TRIPLE A
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </div>
+</header>
+
+<section class="container" id="login-section" style="max-width: 440px;">
+  <div class="product-card" style="padding: 40px;">
+    <h1 style="font-size: 32px; text-align: center; margin-bottom: 8px;">Admin Access</h1>
+    <p style="text-align: center; margin-bottom: 32px;">Please sign in with administrator credentials.</p>
+    
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <input id="email" type="email" placeholder="Admin Email">
+      <input id="password" type="password" placeholder="Password">
+      <button id="loginBtn">Sign In</button>
+    </div>
+    <p id="auth-error" style="margin-top: 20px; color: #ff3b30; text-align: center; font-size: 14px;"></p>
+  </div>
+</section>
+
+<section class="container" id="admin-section" style="display:none;">
+  <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 40px;">
+    <h1>Admin Dashboard</h1>
+    <button id="logoutBtn" class="secondary" style="padding: 8px 20px; font-size: 14px;">Sign Out</button>
+  </div>
+
+  <div class="grid" style="grid-template-columns: 1fr 2fr; align-items: start;">
+    <div class="product-card" style="position: sticky; top: 100px;">
+      <h2 style="font-size: 24px; margin-bottom: 24px;">Add New Product</h2>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <input id="p-name" placeholder="Product Name">
+        <input id="p-size" placeholder="Size (e.g. 10x12)">
+        <input id="p-color" placeholder="Color">
+        <input id="p-thickness" type="number" placeholder="Thickness (microns)">
+        <input id="p-price" type="number" placeholder="Price per 1000 units">
+        <button id="addProdBtn" style="margin-top: 8px;">Add Product</button>
+      </div>
+    </div>
+
+    <div>
+      <h2 style="font-size: 24px; margin-bottom: 24px;">Active Orders</h2>
+      <div id="orders-list" class="grid" style="grid-template-columns: 1fr; margin-top: 0; gap: 20px;">
+        <!-- Orders will load here -->
+      </div>
+      
+      <h2 style="font-size: 24px; margin: 60px 0 24px 0;">Product Inventory</h2>
+      <div id="admin-product-list" class="grid" style="grid-template-columns: 1fr; margin-top: 0; gap: 20px;">
+        <!-- Products will load here -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="module" src="js/admin.js"></script>
+
+</body>
+</html>
