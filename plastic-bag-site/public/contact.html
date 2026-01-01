@@ -10,15 +10,19 @@
     <header class="navbar">
       <div class="nav-inner">
         <a class="logo" href="index.html">
-          <img src="assets/logo.png" alt="Triple A" style="height:24px; margin-right:8px;">
-          TRIPLE A
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <rect width="24" height="24" rx="4" fill="#0071e3"></rect>
+            <path d="M6 15h12v-2H6v2zm0-4h12V9H6v2z" fill="#fff"></path>
+          </svg>
+          <span class="logo-text">TRIPLE A</span>
         </a>
+
         <nav>
           <a href="index.html">Home</a>
           <a href="products.html">Products</a>
           <a href="about.html">About</a>
           <a href="contact.html">Contact</a>
-          <a href="auth.html">Sign In</a>
+          <a href="auth.html" id="auth-link">Sign In</a>
         </nav>
       </div>
     </header>
@@ -27,7 +31,7 @@
       <h1>Contact Triple A</h1>
       <p>For pricing inquiries, bulk orders, or pickup logistics, reach out using the form below.</p>
 
-      <!-- Replace FORM_ID with your real Formspree form ID -->
+      <!-- Formspree form (you provided the ID) -->
       <form id="contact-form" action="https://formspree.io/f/maqnqypk" method="POST" style="max-width:700px;">
         <div style="margin-top:12px;">
           <label style="display:block; font-weight:600;">Name</label>
@@ -46,5 +50,7 @@
         </div>
       </form>
     </main>
+
+    <script type="module" src="js/auth.js"></script>
   </body>
 </html>
