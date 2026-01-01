@@ -10,15 +10,19 @@
     <header class="navbar">
       <div class="nav-inner">
         <a class="logo" href="index.html">
-          <img src="assets/logo.png" alt="Triple A" style="height:24px; margin-right:8px;">
-          TRIPLE A
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <rect width="24" height="24" rx="4" fill="#0071e3"></rect>
+            <path d="M6 15h12v-2H6v2zm0-4h12V9H6v2z" fill="#fff"></path>
+          </svg>
+          <span class="logo-text">TRIPLE A</span>
         </a>
+
         <nav>
           <a href="index.html">Home</a>
           <a href="products.html">Products</a>
           <a href="about.html">About</a>
           <a href="contact.html">Contact</a>
-          <a href="auth.html">Sign In</a>
+          <a href="auth.html" id="auth-link">Sign In</a>
         </nav>
       </div>
     </header>
@@ -26,7 +30,7 @@
     <main class="container" style="max-width:720px; margin:auto;">
       <div id="login-view">
         <h1>Welcome back.</h1>
-        <p>Sign in to manage your wholesale orders.</p>
+        <p>Sign in to manage your wholesale orders or access the admin portal.</p>
 
         <div style="margin-top:20px;">
           <label style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--black);">Email Address</label>
@@ -46,7 +50,34 @@
         <p style="margin-top:20px;">or</p>
 
         <div style="margin-top:12px;">
+          <button id="showSignUpBtn">Create Business Account</button>
+        </div>
+      </div>
+
+      <div id="signup-view" style="display:none;">
+        <h1>Create Account</h1>
+        <p>Enter your business contact details. Customers should provide contact info for order follow-up.</p>
+
+        <div style="margin-top:12px;">
+          <label style="display:block; font-weight:600;">Full name</label>
+          <input id="signup-name" type="text" />
+        </div>
+        <div style="margin-top:12px;">
+          <label style="display:block; font-weight:600;">Phone</label>
+          <input id="signup-phone" type="text" />
+        </div>
+        <div style="margin-top:12px;">
+          <label style="display:block; font-weight:600;">Email</label>
+          <input id="signup-email" type="email" />
+        </div>
+        <div style="margin-top:12px;">
+          <label style="display:block; font-weight:600;">Password</label>
+          <input id="signup-password" type="password" />
+        </div>
+
+        <div style="margin-top:16px;">
           <button id="signUpBtn">Create Business Account</button>
+          <button id="showLogin" style="margin-left:8px;">Back to Sign In</button>
         </div>
       </div>
 
@@ -63,12 +94,13 @@
           <button id="sendResetBtn">Send Reset Link</button>
         </div>
 
-        <p style="margin-top:12px;"><a href="#" id="showLogin">Back to Sign In</a></p>
+        <p style="margin-top:12px;"><a href="#" id="showLoginFromForgot">Back to Sign In</a></p>
       </div>
 
       <p id="message" style="margin-top:12px;"></p>
     </main>
 
+    <script type="module" src="js/supabase.js"></script>
     <script type="module" src="js/auth.js"></script>
   </body>
 </html>
