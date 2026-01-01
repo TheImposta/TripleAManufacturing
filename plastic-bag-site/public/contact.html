@@ -1,49 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Contact - Triple A</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="nav-inner">
+        <a class="logo" href="index.html">
+          <img src="assets/logo.png" alt="Triple A" style="height:24px; margin-right:8px;">
+          TRIPLE A
+        </a>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="products.html">Products</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="auth.html">Sign In</a>
+        </nav>
+      </div>
+    </header>
 
-<script>
-  window.SUPABASE_URL = "https://cfslslxrbqmlxhpzkiwt.supabase.co";
-  window.SUPABASE_ANON_KEY = "YOUR_ANON_KEY_HERE";
-</script>
+    <main class="container">
+      <h1>Contact Triple A</h1>
+      <p>For pricing inquiries, bulk orders, or pickup logistics, reach out using the form below.</p>
 
-<title>Contact | Triple A</title>
-
-<link rel="stylesheet" href="css/styles.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
-</head>
-
-<body>
-
-<header class="navbar">
-  <div class="nav-inner">
-    <img src="assets/logo.png" class="logo" alt="Triple A Logo">
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="products.html">Products</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<section class="container">
-  <h1>Contact Triple A</h1>
-
-  <p>
-    For pricing inquiries, bulk orders, or long-term supply discussions,
-    please contact our sales team directly.
-  </p>
-
-  <p><strong>Email:</strong> sales@tripleamanufacturing.com</p>
-  <p><strong>Phone:</strong> +1-555-410-8821</p>
-
-  <p>
-    Our team responds to all business inquiries within one business day.
-  </p>
-</section>
-
-</body>
+      <!-- Replace FORM_ID with your real Formspree form ID -->
+      <form id="contact-form" action="https://formspree.io/f/maqnqypk" method="POST" style="max-width:700px;">
+        <div style="margin-top:12px;">
+          <label style="display:block; font-weight:600;">Name</label>
+          <input name="name" type="text" required style="width:100%; padding:12px; border-radius:8px; border:1px solid #d2d2d7;">
+        </div>
+        <div style="margin-top:12px;">
+          <label style="display:block; font-weight:600;">Email</label>
+          <input name="email" type="email" required style="width:100%; padding:12px; border-radius:8px; border:1px solid #d2d2d7;">
+        </div>
+        <div style="margin-top:12px;">
+          <label style="display:block; font-weight:600;">Message</label>
+          <textarea name="message" required rows="6" style="width:100%; padding:12px; border-radius:8px; border:1px solid #d2d2d7;"></textarea>
+        </div>
+        <div style="margin-top:16px;">
+          <button type="submit">Send</button>
+        </div>
+      </form>
+    </main>
+  </body>
 </html>
