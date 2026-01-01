@@ -10,15 +10,19 @@
     <header class="navbar">
       <div class="nav-inner">
         <a class="logo" href="index.html">
-          <img src="assets/logo.png" alt="Triple A" style="height:24px; margin-right:8px;">
-          TRIPLE A
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <rect width="24" height="24" rx="4" fill="#0071e3"></rect>
+            <path d="M6 15h12v-2H6v2zm0-4h12V9H6v2z" fill="#fff"></path>
+          </svg>
+          <span class="logo-text">TRIPLE A</span>
         </a>
+
         <nav>
           <a href="index.html">Home</a>
           <a href="products.html">Products</a>
           <a href="about.html">About</a>
           <a href="contact.html">Contact</a>
-          <a href="auth.html">Sign In</a>
+          <a href="auth.html" id="auth-link">Sign In</a>
         </nav>
       </div>
     </header>
@@ -51,9 +55,11 @@
         <div style="display:flex; justify-content:space-between; align-items:center;">
           <div>
             <h1>Admin Dashboard</h1>
-            <p>Industrial Inventory &amp; Order Management</p>
+            <p>Inventory &amp; Order Management</p>
           </div>
-          <div>
+          <div style="display:flex; gap:12px; align-items:center;">
+            <div id="new-orders-badge" style="display:none; background:#ff3b30; color:#fff; padding:6px 10px; border-radius:999px; font-weight:700;"></div>
+            <button id="mark-notified-btn" style="display:none;">Mark orders notified</button>
             <button id="logoutBtn">Sign Out</button>
           </div>
         </div>
@@ -101,7 +107,16 @@
         </section>
 
         <section style="margin-top:40px;">
-          <h2>Product Inventory</h2>
+          <h2>Your Admin Contact</h2>
+          <p>Set how customers should contact you when they place orders.</p>
+          <div style="display:flex; gap:12px; align-items:center; margin-top:12px;">
+            <input id="admin-display-name" placeholder="Display name (e.g. John at Triple A)" />
+            <input id="admin-contact-email" placeholder="Contact email" />
+            <input id="admin-contact-phone" placeholder="Contact phone" />
+            <button id="save-admin-contact">Save</button>
+          </div>
+
+          <h2 style="margin-top:32px;">Product Inventory</h2>
           <div id="admin-product-list" style="margin-top:12px; display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:20px;">
             <p>Loading inventory...</p>
           </div>
@@ -109,6 +124,7 @@
       </section>
     </main>
 
+    <script type="module" src="js/supabase.js"></script>
     <script type="module" src="js/admin.js"></script>
   </body>
 </html>
