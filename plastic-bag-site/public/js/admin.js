@@ -9,29 +9,55 @@ const authError = document.getElementById('auth-error');
 // --- 1. AUTHENTICATION & SECURITY ---
 
 /**
- * Checks if the user is an admin based on user_metadata.
- * This is the secure way we set up in the Supabase dashboard.
+ * Checks if the user is an admin based on user/app metadata.
+ * Supabase can expose metadata under different keys depending on SDK/version:
+ *  - user.user_metadata
+ *  - user.user_meta_data
+ *  - user.raw_user_meta_data
+ *  - user.raw_app_meta_data
+ *  - user.app_metadata
+ *
+ * This function tests the common places for the is_admin flag and also
+ * falls back to an email-based heuristic.
  */
-async function checkAdmin() {
-    // We use getSession and refreshSession to ensure we have the latest metadata
-    const { data: { session } } = await supabase.auth.refreshSession();
-    
-    if (session && session.user) {
-        const user = session.user;
-        
-        // CHECK: Does the user have the is_admin flag in their metadata?
-        const isAdmin = user.user_meta_data && user.user_meta_data.is_admin === true;
-        
-        // BACKUP CHECK: In case you are still using an email with 'admin' in it
-        const hasAdminEmail = user.email.includes('admin');
+function isUserAdmin(user) {
+    if (!user) return false;
 
-        if (isAdmin || hasAdminEmail) {
+    return Boolean(
+        // common modern key
+        (user.user_metadata && user.user_metadata.is_admin === true) ||
+        // older/alternate typo key (safe to check)
+        (user.user_meta_data && user.user_meta_data.is_admin === true) ||
+        // the raw app/user metadata as supplied in your JSON
+        (user.raw_app_meta_data && user.raw_app_meta_data.is_admin === true) ||
+        (user.raw_user_meta_data && user.raw_user_meta_data.is_admin === true) ||
+        // another possible key
+        (user.app_metadata && user.app_metadata.is_admin === true) ||
+        // fallback heuristic
+        (user.email && user.email.includes('admin'))
+    );
+}
+
+async function checkAdmin() {
+    // Try to get the freshest session + user info
+    const [{ data: sessionData }, { data: userData }] = await Promise.all([
+        supabase.auth.getSession(),
+        supabase.auth.getUser()
+    ]);
+
+    const session = sessionData?.session;
+    const user = userData?.user;
+
+    if (session && user) {
+        const isAdmin = isUserAdmin(user);
+
+        if (isAdmin) {
             loginSection.style.display = 'none';
             adminSection.style.display = 'block';
             loadDashboard();
         } else {
             authError.innerText = "Access denied. Admin credentials required.";
-            // Wait a moment so they can see the error, then sign out
+            // Give user a moment to see the message, then sign out
             setTimeout(async () => {
                 await supabase.auth.signOut();
             }, 2000);
@@ -63,7 +89,8 @@ loginBtn.onclick = async () => {
         loginBtn.disabled = false;
     } else {
         // Successful login, run the admin check
-        checkAdmin();
+        // give Supabase a moment to hydrate session metadata if needed, then check
+        setTimeout(checkAdmin, 300);
     }
 };
 
@@ -88,23 +115,23 @@ async function loadOrders() {
     const container = document.getElementById('orders-list');
     
     if (error || !data || data.length === 0) {
-        container.innerHTML = '<div class="product-card"><p>No orders found.</p></div>';
+        container.innerHTML = '<p>No orders found.</p>';
         return;
     }
 
     container.innerHTML = data.map(o => `
-        <div class="product-card" style="padding: 24px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-            <div>
-                <h4 style="font-weight: 700; font-size: 18px; margin: 0;">${o.products?.name || 'Unknown Product'}</h4>
-                <p style="font-size: 14px; margin: 4px 0;">Quantity: <strong>${o.quantity}</strong> &middot; Total: <strong>$${o.total_price}</strong></p>
-                <p style="font-size: 12px; color: var(--gray); margin: 0;">User ID: ${o.user_id}</p>
-            </div>
-            <div style="text-align: right;">
-                <span style="background: #e8e8ed; padding: 4px 12px; border-radius: 980px; font-size: 12px; font-weight: 600; text-transform: uppercase;">
+        
+            
+                <h4>${o.products?.name || 'Unknown Product'}</h4>
+                <p>Quantity: <strong>${o.quantity}</strong> · Total: <strong>$${o.total_price}</strong></p>
+                <p>User ID: ${o.user_id}</p>
+            
+            
+                
                     ${o.status || 'PENDING'}
-                </span>
-            </div>
-        </div>
+                
+            
+        
     `).join('');
 }
 
@@ -119,16 +146,16 @@ async function loadProducts() {
     if (error || !data) return;
 
     container.innerHTML = data.map(p => `
-        <div class="product-card" style="padding: 24px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-            <div>
-                <h4 style="font-weight: 700; font-size: 18px; margin: 0;">${p.name}</h4>
-                <p style="font-size: 14px; margin: 4px 0;">${p.size} &middot; ${p.color} &middot; ${p.thickness_microns}μ</p>
-                <p style="font-size: 14px; font-weight: 600; color: var(--blue); margin: 0;">$${p.price_per_1000} / 1k units</p>
-            </div>
-            <div style="display: flex; gap: 12px;">
-                <button class="secondary" style="padding: 8px 16px; font-size: 12px; color: #ff3b30; border-color: #ff3b30;" onclick="deleteProduct('${p.id}')">Delete</button>
-            </div>
-        </div>
+        
+            
+                <h4>${p.name}</h4>
+                <p>${p.size} · ${p.color} · ${p.thickness_microns}μ</p>
+                <p>$${p.price_per_1000} / 1k units</p>
+            
+            
+                Delete
+            
+        
     `).join('');
 }
 
