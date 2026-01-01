@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Admin Portal | Triple A</title>
-<link rel="stylesheet" href="css/styles.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Portal | Triple A</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <header class="navbar">
   <div class="nav-inner">
-    <a href="index.html" class="logo">
+    <a href="index.html" class="logo" style="display: flex; align-items: center; text-decoration: none; color: var(--black); font-weight: 700;">
       <img src="assets/logo.png" alt="Triple A" style="height: 32px; margin-right: 12px;">
       TRIPLE A
     </a>
     <nav>
       <a href="index.html">Home</a>
       <a href="products.html">Products</a>
-      <a href="admin.html">Admin</a>
+      <a href="admin.html" style="color: var(--blue); font-weight: 600;">Admin</a>
     </nav>
   </div>
 </header>
 
-<section class="container" id="login-section" style="max-width: 440px;">
+<section class="container" id="login-section" style="max-width: 440px; display: none;">
   <div class="product-card" style="padding: 40px;">
     <h1 style="font-size: 32px; text-align: center; margin-bottom: 8px;">Admin Access</h1>
     <p style="text-align: center; margin-bottom: 32px;">Please sign in with administrator credentials.</p>
@@ -39,11 +39,14 @@
 
 <section class="container" id="admin-section" style="display:none;">
   <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 40px;">
-    <h1>Admin Dashboard</h1>
+    <div>
+      <h1 style="margin-bottom: 0;">Admin Dashboard</h1>
+      <p style="color: var(--gray);">Industrial Inventory & Order Management</p>
+    </div>
     <button id="logoutBtn" class="secondary" style="padding: 8px 20px; font-size: 14px;">Sign Out</button>
   </div>
 
-  <div class="grid" style="grid-template-columns: 1fr 2fr; align-items: start;">
+  <div class="grid" style="grid-template-columns: 1fr 2fr; align-items: start; gap: 40px;">
     <div class="product-card" style="position: sticky; top: 100px;">
       <h2 style="font-size: 24px; margin-bottom: 24px;">Add New Product</h2>
       <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -58,13 +61,13 @@
 
     <div>
       <h2 style="font-size: 24px; margin-bottom: 24px;">Active Orders</h2>
-      <div id="orders-list" class="grid" style="grid-template-columns: 1fr; margin-top: 0; gap: 20px;">
-        <!-- Orders will load here -->
+      <div id="orders-list" style="display: flex; flex-direction: column; gap: 16px;">
+        <p style="color: var(--gray); font-style: italic;">Loading orders...</p>
       </div>
       
       <h2 style="font-size: 24px; margin: 60px 0 24px 0;">Product Inventory</h2>
-      <div id="admin-product-list" class="grid" style="grid-template-columns: 1fr; margin-top: 0; gap: 20px;">
-        <!-- Products will load here -->
+      <div id="admin-product-list" style="display: flex; flex-direction: column; gap: 16px;">
+        <p style="color: var(--gray); font-style: italic;">Loading inventory...</p>
       </div>
     </div>
   </div>
