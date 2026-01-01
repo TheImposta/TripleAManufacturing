@@ -2,14 +2,13 @@
   "name": "triple-a-manufacturing",
   "version": "1.0.0",
   "description": "Industrial Plastic Manufacturing Website",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "npx serve plastic-bag-site/public -l 5000"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "dependencies": {
-    "serve": "^14.2.0"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
 }
