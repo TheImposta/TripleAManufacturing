@@ -10,28 +10,35 @@
     <header class="navbar">
       <div class="nav-inner">
         <a class="logo" href="index.html">
-          <img src="assets/logo.png" alt="Triple A" style="height:24px; margin-right:8px;">
-          TRIPLE A
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <rect width="24" height="24" rx="4" fill="#0071e3"></rect>
+            <path d="M6 15h12v-2H6v2zm0-4h12V9H6v2z" fill="#fff"></path>
+          </svg>
+          <span class="logo-text">TRIPLE A</span>
         </a>
+
         <nav>
           <a href="index.html">Home</a>
           <a href="products.html">Products</a>
           <a href="about.html">About</a>
           <a href="contact.html">Contact</a>
-          <a href="auth.html">Sign In</a>
+          <a href="auth.html" id="auth-link">Sign In</a>
         </nav>
       </div>
     </header>
 
-    <main class="container text-center">
-      <h1>Wholesale Catalog.</h1>
-      <p>Bulk pricing and custom specifications available for registered commercial partners.</p>
-      <div id="product-list" style="margin-top:30px;">
+    <main class="container">
+      <h1 class="text-center">Wholesale Catalog</h1>
+      <p class="text-center">Bulk pricing and custom specifications for registered buyers.</p>
+
+      <div id="product-list" class="grid" style="margin-top:30px;">
         <p>Loading catalog...</p>
       </div>
     </main>
 
+    <script type="module" src="js/supabase.js"></script>
     <script type="module" src="js/products.js"></script>
     <script type="module" src="js/order.js"></script>
+    <script type="module" src="js/auth.js"></script>
   </body>
 </html>
