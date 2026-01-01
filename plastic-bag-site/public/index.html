@@ -10,28 +10,61 @@
     <header class="navbar">
       <div class="nav-inner">
         <a class="logo" href="index.html">
-          <img src="assets/logo.png" alt="Triple A" style="height:24px; margin-right:8px;">
-          TRIPLE A
+          <!-- Inline simple SVG logo (replace with a nicer asset if you want) -->
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <rect width="24" height="24" rx="4" fill="#0071e3"></rect>
+            <path d="M6 15h12v-2H6v2zm0-4h12V9H6v2z" fill="#fff"></path>
+          </svg>
+          <span class="logo-text">TRIPLE A</span>
         </a>
+
         <nav>
           <a href="index.html">Home</a>
           <a href="products.html">Products</a>
           <a href="about.html">About</a>
           <a href="contact.html">Contact</a>
-          <a href="auth.html">Sign In</a>
+          <a href="auth.html" id="auth-link">Sign In</a>
         </nav>
       </div>
     </header>
 
-    <main class="container text-center">
-      <h1>Industrial Strength.<br>Precision Engineered.</h1>
-      <p>Premium high-volume plastic manufacturing for global wholesale supply chains.</p>
-      <a href="products.html">Explore the Catalog</a>
+    <main>
+      <section class="hero">
+        <div class="hero-inner">
+          <h1>Industrial Strength.<br>Precision Engineered.</h1>
+          <p class="hero-sub">Premium high-volume plastic manufacturing for wholesale partners — predictable specs, fast lead times, and reliable pickup logistics.</p>
+          <div class="hero-cta">
+            <a class="button-link" href="products.html"><button>Explore the Catalog</button></a>
+            <a class="button-link" href="contact.html"><button style="background:#111; margin-left:12px;">Get a Quote</button></a>
+          </div>
+        </div>
+      </section>
 
-      <section style="margin-top:60px;">
-        <h2>Engineered for Scale.</h2>
-        <p>We combine advanced material science with high-throughput manufacturing to deliver uncompromising consistency at the micron level. Our facility operates 24/7 to ensure your supply chain remains uninterrupted.</p>
+      <section class="container">
+        <div class="grid">
+          <div class="product-card">
+            <h3>Made for Scale</h3>
+            <p>Consistent thickness, tight tolerances, and controlled color matching for industrial packaging needs.</p>
+          </div>
+
+          <div class="product-card">
+            <h3>Responsible Manufacturing</h3>
+            <p>Audited suppliers and energy-efficient processes reduce waste across production—partner with a supplier who values quality and compliance.</p>
+          </div>
+
+          <div class="product-card">
+            <h3>Reliable Logistics</h3>
+            <p>Fast pickup coordination and support for large-volume contracts so your supply chain keeps moving.</p>
+          </div>
+        </div>
+
+        <section style="margin-top:48px;">
+          <h2>How we make our films</h2>
+          <p>We produce film using industry-grade blown-film and cast-film extrusion lines, then convert and seal bags with precision cutting tools. Our in-house QC ensures each batch meets micron-level thickness tolerances.</p>
+        </section>
       </section>
     </main>
+
+    <script type="module" src="js/auth.js"></script>
   </body>
 </html>
