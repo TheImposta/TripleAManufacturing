@@ -1,79 +1,108 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin Portal | Triple A</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-</head>
-<body>
-
-<header class="navbar">
-  <div class="nav-inner">
-    <a href="index.html" class="logo" style="display: flex; align-items: center; text-decoration: none; color: var(--black); font-weight: 700;">
-      <img src="assets/logo.png" alt="Triple A" style="height: 32px; margin-right: 12px;">
-      TRIPLE A
-    </a>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="products.html">Products</a>
-      <a href="admin.html" style="color: var(--blue); font-weight: 600;">Admin</a>
-    </nav>
-  </div>
-</header>
-
-<section class="container" id="login-section" style="max-width: 440px; display: none;">
-  <div class="product-card" style="padding: 40px;">
-    <h1 style="font-size: 32px; text-align: center; margin-bottom: 8px;">Admin Access</h1>
-    <p style="text-align: center; margin-bottom: 32px;">Please sign in with administrator credentials.</p>
-    
-    <div style="display: flex; flex-direction: column; gap: 16px;">
-      <input id="email" type="email" placeholder="Admin Email">
-      <input id="password" type="password" placeholder="Password">
-      <button id="loginBtn">Sign In</button>
-    </div>
-    <p id="auth-error" style="margin-top: 20px; color: #ff3b30; text-align: center; font-size: 14px;"></p>
-  </div>
-</section>
-
-<section class="container" id="admin-section" style="display:none;">
-  <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 40px;">
-    <div>
-      <h1 style="margin-bottom: 0;">Admin Dashboard</h1>
-      <p style="color: var(--gray);">Industrial Inventory & Order Management</p>
-    </div>
-    <button id="logoutBtn" class="secondary" style="padding: 8px 20px; font-size: 14px;">Sign Out</button>
-  </div>
-
-  <div class="grid" style="grid-template-columns: 1fr 2fr; align-items: start; gap: 40px;">
-    <div class="product-card" style="position: sticky; top: 100px;">
-      <h2 style="font-size: 24px; margin-bottom: 24px;">Add New Product</h2>
-      <div style="display: flex; flex-direction: column; gap: 16px;">
-        <input id="p-name" placeholder="Product Name">
-        <input id="p-size" placeholder="Size (e.g. 10x12)">
-        <input id="p-color" placeholder="Color">
-        <input id="p-thickness" type="number" placeholder="Thickness (microns)">
-        <input id="p-price" type="number" placeholder="Price per 1000 units">
-        <button id="addProdBtn" style="margin-top: 8px;">Add Product</button>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Admin - Triple A</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="nav-inner">
+        <a class="logo" href="index.html">
+          <img src="assets/logo.png" alt="Triple A" style="height:24px; margin-right:8px;">
+          TRIPLE A
+        </a>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="products.html">Products</a>
+          <a href="admin.html">Admin</a>
+        </nav>
       </div>
-    </div>
+    </header>
 
-    <div>
-      <h2 style="font-size: 24px; margin-bottom: 24px;">Active Orders</h2>
-      <div id="orders-list" style="display: flex; flex-direction: column; gap: 16px;">
-        <p style="color: var(--gray); font-style: italic;">Loading orders...</p>
-      </div>
-      
-      <h2 style="font-size: 24px; margin: 60px 0 24px 0;">Product Inventory</h2>
-      <div id="admin-product-list" style="display: flex; flex-direction: column; gap: 16px;">
-        <p style="color: var(--gray); font-style: italic;">Loading inventory...</p>
-      </div>
-    </div>
-  </div>
-</section>
+    <main class="container">
+      <!-- LOGIN SECTION -->
+      <section id="login-section" style="max-width:520px; margin:auto; text-align:left;">
+        <h1>Admin Access</h1>
+        <p>Please sign in with administrator credentials.</p>
 
-<script type="module" src="js/admin.js"></script>
+        <div style="margin-top:20px;">
+          <label style="display:block; margin-bottom:6px; font-weight:600;">Email</label>
+          <input id="email" type="email" placeholder="admin@example.com" style="width:100%; padding:12px 16px; border-radius:12px; border:1px solid #d2d2d7; font-size:16px;" />
+        </div>
 
-</body>
+        <div style="margin-top:12px;">
+          <label style="display:block; margin-bottom:6px; font-weight:600;">Password</label>
+          <input id="password" type="password" placeholder="Password" style="width:100%; padding:12px 16px; border-radius:12px; border:1px solid #d2d2d7; font-size:16px;" />
+        </div>
+
+        <p id="auth-error" style="color:#ff3b30; margin-top:12px;"></p>
+
+        <div style="margin-top:20px;">
+          <button id="loginBtn">Sign In</button>
+        </div>
+      </section>
+
+      <!-- ADMIN DASHBOARD -->
+      <section id="admin-section" style="display:none; max-width:1200px; margin:40px auto 120px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <h1>Admin Dashboard</h1>
+            <p>Industrial Inventory &amp; Order Management</p>
+          </div>
+          <div>
+            <button id="logoutBtn">Sign Out</button>
+          </div>
+        </div>
+
+        <hr style="margin:24px 0; border:none; border-top:1px solid rgba(0,0,0,0.06);" />
+
+        <section style="display:grid; grid-template-columns: 1fr 1fr; gap:32px;">
+          <div>
+            <h2>Add New Product</h2>
+            <div style="margin-top:12px;">
+              <label style="display:block; font-size:14px; font-weight:600;">Name</label>
+              <input id="p-name" type="text" />
+            </div>
+            <div style="margin-top:12px;">
+              <label style="display:block; font-size:14px; font-weight:600;">Size</label>
+              <input id="p-size" type="text" placeholder="e.g. 12x18" />
+            </div>
+            <div style="margin-top:12px;">
+              <label style="display:block; font-size:14px; font-weight:600;">Color</label>
+              <input id="p-color" type="text" placeholder="e.g. Clear" />
+            </div>
+            <div style="margin-top:12px;">
+              <label style="display:block; font-size:14px; font-weight:600;">Thickness (microns)</label>
+              <input id="p-thickness" type="number" />
+            </div>
+            <div style="margin-top:12px;">
+              <label style="display:block; font-size:14px; font-weight:600;">Price per 1000</label>
+              <input id="p-price" type="number" step="0.01" />
+            </div>
+            <div style="margin-top:16px;">
+              <button id="addProdBtn">Add Product</button>
+            </div>
+          </div>
+
+          <div>
+            <h2>Active Orders</h2>
+            <div id="orders-list" style="margin-top:12px; padding:12px; background:var(--gray-light); border-radius:12px;">
+              <p>Loading orders...</p>
+            </div>
+          </div>
+        </section>
+
+        <section style="margin-top:40px;">
+          <h2>Product Inventory</h2>
+          <div id="admin-product-list" style="margin-top:12px; display:grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap:20px;">
+            <p>Loading inventory...</p>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="js/admin.js"></script>
+  </body>
 </html>
