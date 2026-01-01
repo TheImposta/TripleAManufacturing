@@ -16,7 +16,9 @@
         <nav>
           <a href="index.html">Home</a>
           <a href="products.html">Products</a>
-          <a href="admin.html">Admin</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="auth.html">Sign In</a>
         </nav>
       </div>
     </header>
@@ -81,6 +83,10 @@
               <label style="display:block; font-size:14px; font-weight:600;">Price per 1000</label>
               <input id="p-price" type="number" step="0.01" />
             </div>
+            <div style="margin-top:12px;">
+              <label style="display:block; font-size:14px; font-weight:600;">Initial Quantity (optional)</label>
+              <input id="p-quantity" type="number" />
+            </div>
             <div style="margin-top:16px;">
               <button id="addProdBtn">Add Product</button>
             </div>
@@ -96,7 +102,7 @@
 
         <section style="margin-top:40px;">
           <h2>Product Inventory</h2>
-          <div id="admin-product-list" style="margin-top:12px; display:grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap:20px;">
+          <div id="admin-product-list" style="margin-top:12px; display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:20px;">
             <p>Loading inventory...</p>
           </div>
         </section>
