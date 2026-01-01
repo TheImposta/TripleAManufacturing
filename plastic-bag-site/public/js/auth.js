@@ -169,6 +169,7 @@ if (signUpBtn) {
       email: email,
       full_name: fullName,
       phone: phone
+      // Admin status is managed manually in Supabase
     }, { onConflict: 'email' });
 
     if (insertErr) {
