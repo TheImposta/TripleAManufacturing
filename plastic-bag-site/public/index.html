@@ -1,64 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Triple A | Industrial Manufacturing</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-</head>
-<body>
-  <header class="navbar">
-    <div class="nav-inner">
-      <a href="index.html" class="logo">
-        <img src="assets/logo.png" alt="Triple A" style="height: 32px; margin-right: 12px;">
-        TRIPLE A
-      </a>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="products.html">Products</a>
-        <a href="auth.html" id="auth-link">Sign In</a>
-      </nav>
-    </div>
-  </header>
-
-  <section class="hero" style="background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('assets/hero-bg.jpg'); background-size: cover; background-position: center;">
-    <h1>Industrial Strength.<br>Precision Engineered.</h1>
-    <p>Premium high-volume plastic manufacturing for global wholesale supply chains.</p>
-    <a href="products.html"><button>Explore the Catalog</button></a>
-  </section>
-
-  <section class="container">
-    <div class="text-center">
-      <h2>Engineered for Scale.</h2>
-      <p>We combine advanced material science with high-throughput manufacturing to deliver uncompromising consistency at the micron level. Our facility operates 24/7 to ensure your supply chain remains uninterrupted.</p>
-    </div>
-    
-    <div class="grid">
-      <div class="product-card">
-        <h3>Reliability</h3>
-        <p>Rigorous quality control processes ensure every batch meets your exact specifications.</p>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Triple A - Industrial Plastic Manufacturing</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="nav-inner">
+        <a class="logo" href="index.html">
+          <img src="assets/logo.png" alt="Triple A" style="height:24px; margin-right:8px;">
+          TRIPLE A
+        </a>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="products.html">Products</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="auth.html">Sign In</a>
+        </nav>
       </div>
-      <div class="product-card">
-        <h3>Efficiency</h3>
-        <p>Optimized production lines designed for high-volume wholesale requirements.</p>
-      </div>
-      <div class="product-card">
-        <h3>Innovation</h3>
-        <p>Continuous investment in material science and sustainable manufacturing practices.</p>
-      </div>
-    </div>
-  </section>
+    </header>
 
-  <footer style="background: var(--gray-light); padding: 60px 20px; text-align: center; border-top: 1px solid rgba(0,0,0,0.05);">
-    <div class="container" style="padding: 0;">
-      <p style="font-size: 14px; opacity: 0.6;">&copy; 2026 Triple A Manufacturing. All rights reserved.</p>
-    </div>
-  </footer>
+    <main class="container text-center">
+      <h1>Industrial Strength.<br>Precision Engineered.</h1>
+      <p>Premium high-volume plastic manufacturing for global wholesale supply chains.</p>
+      <a href="products.html">Explore the Catalog</a>
 
-  <script type="module">
-    import { checkUser } from './js/auth.js';
-    checkUser();
-  </script>
-</body>
+      <section style="margin-top:60px;">
+        <h2>Engineered for Scale.</h2>
+        <p>We combine advanced material science with high-throughput manufacturing to deliver uncompromising consistency at the micron level. Our facility operates 24/7 to ensure your supply chain remains uninterrupted.</p>
+      </section>
+    </main>
+  </body>
 </html>
