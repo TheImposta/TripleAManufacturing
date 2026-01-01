@@ -24,7 +24,6 @@ export async function checkUser() {
     } else {
       authLink.innerText = "Sign In";
       authLink.href = "auth.html";
-      authLink.onclick = null;
     }
   }
   return user;
@@ -128,8 +127,9 @@ if (sendResetBtn) {
     sendResetBtn.innerText = "Sending...";
     sendResetBtn.disabled = true;
 
+    // CRITICAL: This URL must match your Supabase Redirect Whitelist exactly
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: window.location.origin + '/reset-password.html',
+      redirectTo: 'https://triplea-9nc.pages.dev/reset-password.html',
     });
 
     if (error) {
